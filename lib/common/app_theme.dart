@@ -16,5 +16,18 @@ class AppTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColor.goldColor,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: AppColor.blackColor,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+      elevation: 0,
+      selectedLabelStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+    ),
   );
 }

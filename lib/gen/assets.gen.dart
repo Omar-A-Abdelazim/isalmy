@@ -15,9 +15,25 @@ class Assets {
   const Assets._();
 
   static const AssetGenImage appLogo = AssetGenImage('assets/app_logo.png');
+  static const String hadeethTabIcon = 'assets/hadeeth_tab_icon.svg';
+  static const AssetGenImage quranTabBg = AssetGenImage(
+    'assets/quran_tab_bg.png',
+  );
+  static const String quranTabIcon = 'assets/quran_tab_icon.svg';
+  static const String radioTabIcon = 'assets/radio_tab_icon.svg';
+  static const String sebhaTabIcon = 'assets/sebha_tab_icon.svg';
+  static const String timesTabIcon = 'assets/times_tab_icon.svg';
 
   /// List of all assets
-  static List<AssetGenImage> get values => [appLogo];
+  static List<dynamic> get values => [
+    appLogo,
+    hadeethTabIcon,
+    quranTabBg,
+    quranTabIcon,
+    radioTabIcon,
+    sebhaTabIcon,
+    timesTabIcon,
+  ];
 }
 
 class AssetGenImage {
