@@ -15,6 +15,9 @@ class Assets {
   const Assets._();
 
   static const AssetGenImage appLogo = AssetGenImage('assets/app_logo.png');
+  static const AssetGenImage hadeethCardBg = AssetGenImage(
+    'assets/hadeeth_card_bg.png',
+  );
   static const AssetGenImage hadeethTabBg = AssetGenImage(
     'assets/hadeeth_tab_bg.png',
   );
@@ -29,12 +32,16 @@ class Assets {
   static const String quranTabIcon = 'assets/quran_tab_icon.svg';
   static const String radioTabIcon = 'assets/radio_tab_icon.svg';
   static const String sebhaTabIcon = 'assets/sebha_tab_icon.svg';
+  static const AssetGenImage suraDetailsBg = AssetGenImage(
+    'assets/sura_details_bg.png',
+  );
   static const String timesTabIcon = 'assets/times_tab_icon.svg';
   static const String verseIcon = 'assets/verse_icon.svg';
 
   /// List of all assets
   static List<dynamic> get values => [
     appLogo,
+    hadeethCardBg,
     hadeethTabBg,
     hadeethTabIcon,
     imgHeader,
@@ -43,6 +50,7 @@ class Assets {
     quranTabIcon,
     radioTabIcon,
     sebhaTabIcon,
+    suraDetailsBg,
     timesTabIcon,
     verseIcon,
   ];

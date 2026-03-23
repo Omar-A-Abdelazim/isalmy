@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:isalmy/data/models/sura_model.dart';
 import 'package:isalmy/gen/assets.gen.dart';
+import 'package:isalmy/taps/quran_tab/sura_details_page.dart';
 
 class SuraListSection extends StatelessWidget {
   const SuraListSection({super.key, required this.suras});
@@ -30,6 +31,12 @@ class SuraListSection extends StatelessWidget {
             itemBuilder: (context, index) {
               var sura = suras[index];
               return ListTile(
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    SuraDetailsPage.routeName,
+                    arguments: {'id': index + 1, 'name': sura.arName},
+                  );
+                },
                 minVerticalPadding: 0,
                 contentPadding: EdgeInsets.all(0),
                 title: Text(
