@@ -26,62 +26,60 @@ class SuraListSection extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: SliverList.builder(
-            itemCount: suras.length,
-            itemBuilder: (context, index) {
-              var sura = suras[index];
-              return ListTile(
-                onTap: () async {
-                  Navigator.of(context)
-                      .pushNamed(SuraDetailsPage.routeName, arguments: sura)
-                      .then((value) {
-                        onTap(sura);
-                      });
-                },
-                minVerticalPadding: 0,
-                contentPadding: EdgeInsets.all(0),
-                title: Text(
-                  sura.enName,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+        SliverList.builder(
+          itemCount: suras.length,
+          itemBuilder: (context, index) {
+            var sura = suras[index];
+            return ListTile(
+              onTap: () async {
+                Navigator.of(context)
+                    .pushNamed(SuraDetailsPage.routeName, arguments: sura)
+                    .then((value) {
+                      onTap(sura);
+                    });
+              },
+              minVerticalPadding: 0,
+              contentPadding: EdgeInsets.all(0),
+              title: Text(
+                sura.enName,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                subtitle: Text(
-                  "${sura.versesNumber} verses",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              subtitle: Text(
+                "${sura.versesNumber} verses",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                trailing: Text(
-                  sura.arName,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              trailing: Text(
+                sura.arName,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                leading: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    SvgPicture.asset(Assets.verseIcon),
-                    Text(
-                      sura.number.toString(),
-                      style: TextStyle(
-                        fontSize: index > 100 ? 14 : 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+              ),
+              leading: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SvgPicture.asset(Assets.verseIcon),
+                  Text(
+                    sura.number.toString(),
+                    style: TextStyle(
+                      fontSize: index > 100 ? 14 : 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ],
     );

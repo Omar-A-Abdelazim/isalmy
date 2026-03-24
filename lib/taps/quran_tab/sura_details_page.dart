@@ -26,7 +26,11 @@ class _SuraDetailsPageState extends State<SuraDetailsPage> {
       isFirstBuild = false;
     }
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text(suraData.enName)),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(suraData.enName),
+        backgroundColor: AppColor.blackColor,
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(Assets.suraDetailsBg.path)),

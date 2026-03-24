@@ -687,6 +687,62 @@ class $AssetsSurasGen {
   ];
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/bank.png
+  AssetGenImage get bank => const AssetGenImage('assets/images/bank.png');
+
+  /// File path: assets/images/drawerbackground.jpeg
+  AssetGenImage get drawerbackground =>
+      const AssetGenImage('assets/images/drawerbackground.jpeg');
+
+  /// File path: assets/images/drink.png
+  AssetGenImage get drink => const AssetGenImage('assets/images/drink.png');
+
+  /// File path: assets/images/food.png
+  AssetGenImage get food => const AssetGenImage('assets/images/food.png');
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/menu.png
+  AssetGenImage get menu => const AssetGenImage('assets/images/menu.png');
+
+  /// File path: assets/images/pets.png
+  AssetGenImage get pets => const AssetGenImage('assets/images/pets.png');
+
+  /// File path: assets/images/piggybank.png
+  AssetGenImage get piggybank =>
+      const AssetGenImage('assets/images/piggybank.png');
+
+  /// File path: assets/images/profile.jpeg
+  AssetGenImage get profile =>
+      const AssetGenImage('assets/images/profile.jpeg');
+
+  /// File path: assets/images/transportation.png
+  AssetGenImage get transportation =>
+      const AssetGenImage('assets/images/transportation.png');
+
+  /// File path: assets/images/wallet.png
+  AssetGenImage get wallet => const AssetGenImage('assets/images/wallet.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    bank,
+    drawerbackground,
+    drink,
+    food,
+    logo,
+    menu,
+    pets,
+    piggybank,
+    profile,
+    transportation,
+    wallet,
+  ];
+}
+
 class Assets {
   const Assets._();
 
@@ -700,6 +756,7 @@ class Assets {
     'assets/hadeeth_tab_bg.png',
   );
   static const String hadeethTabIcon = 'assets/hadeeth_tab_icon.svg';
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const AssetGenImage imgHeader = AssetGenImage('assets/img_header.png');
   static const AssetGenImage imgMostRecent = AssetGenImage(
     'assets/img_most_recent.png',
@@ -707,11 +764,31 @@ class Assets {
   static const AssetGenImage islamiLogo = AssetGenImage(
     'assets/islami_logo.png',
   );
+  static const AssetGenImage onboardingBgFive = AssetGenImage(
+    'assets/onboarding_bg_five.png',
+  );
+  static const AssetGenImage onboardingBgFour = AssetGenImage(
+    'assets/onboarding_bg_four.png',
+  );
+  static const AssetGenImage onboardingBgOne = AssetGenImage(
+    'assets/onboarding_bg_one.png',
+  );
+  static const AssetGenImage onboardingBgThree = AssetGenImage(
+    'assets/onboarding_bg_three.png',
+  );
+  static const AssetGenImage onboardingBgTwo = AssetGenImage(
+    'assets/onboarding_bg_two.png',
+  );
   static const AssetGenImage quranTabBg = AssetGenImage(
     'assets/quran_tab_bg.png',
   );
   static const String quranTabIcon = 'assets/quran_tab_icon.svg';
   static const String radioTabIcon = 'assets/radio_tab_icon.svg';
+  static const AssetGenImage routeLogo = AssetGenImage('assets/route_logo.png');
+  static const AssetGenImage sebha = AssetGenImage('assets/sebha.png');
+  static const AssetGenImage sebhaTabBg = AssetGenImage(
+    'assets/sebha_tab_bg.png',
+  );
   static const String sebhaTabIcon = 'assets/sebha_tab_icon.svg';
   static const AssetGenImage splashBg = AssetGenImage('assets/splash_bg.png');
   static const AssetGenImage suraDetailsBg = AssetGenImage(
@@ -729,9 +806,17 @@ class Assets {
     imgHeader,
     imgMostRecent,
     islamiLogo,
+    onboardingBgFive,
+    onboardingBgFour,
+    onboardingBgOne,
+    onboardingBgThree,
+    onboardingBgTwo,
     quranTabBg,
     quranTabIcon,
     radioTabIcon,
+    routeLogo,
+    sebha,
+    sebhaTabBg,
     sebhaTabIcon,
     splashBg,
     suraDetailsBg,
