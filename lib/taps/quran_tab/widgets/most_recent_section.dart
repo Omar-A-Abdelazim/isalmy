@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:isalmy/common/app_color.dart';
+import 'package:isalmy/data/models/sura_model.dart';
 import 'package:isalmy/gen/assets.gen.dart';
 
 class MostRecentSection extends StatelessWidget {
-  const MostRecentSection({super.key});
+  final List<SuraModel> mostRecent;
+  const MostRecentSection({super.key, required this.mostRecent});
 
   @override
   Widget build(BuildContext context) {
+    if (mostRecent.isEmpty) {
+      return SizedBox();
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,35 +29,40 @@ class MostRecentSection extends StatelessWidget {
         SizedBox(
           height: 150,
           child: ListView.builder(
-            itemCount: 10,
+            itemCount: mostRecent.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
+              SuraModel suraModel = mostRecent[index];
               return Card(
                 color: AppColor.goldColor,
                 child: Row(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 12, bottom: 20, left: 17),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 12,
+                        bottom: 20,
+                        left: 17,
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Al-Anbiya",
+                            suraModel.enName,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            suraModel.arName,
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            "الأنبياء",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "112 verses",
+                            suraModel.versesNumber,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

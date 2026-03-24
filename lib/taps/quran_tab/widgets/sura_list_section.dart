@@ -5,7 +5,8 @@ import 'package:isalmy/gen/assets.gen.dart';
 import 'package:isalmy/taps/quran_tab/sura_details_page.dart';
 
 class SuraListSection extends StatelessWidget {
-  const SuraListSection({super.key, required this.suras});
+  const SuraListSection({super.key, required this.suras, required this.onTap});
+  final Future<void> Function(SuraModel) onTap;
   final List<SuraModel> suras;
 
   @override
@@ -31,10 +32,12 @@ class SuraListSection extends StatelessWidget {
             itemBuilder: (context, index) {
               var sura = suras[index];
               return ListTile(
-                onTap: () {
-                  Navigator.of(
-                    context,
-                  ).pushNamed(SuraDetailsPage.routeName, arguments: sura);
+                onTap: () async {
+                  Navigator.of(context)
+                      .pushNamed(SuraDetailsPage.routeName, arguments: sura)
+                      .then((value) {
+                        onTap(sura);
+                      });
                 },
                 minVerticalPadding: 0,
                 contentPadding: EdgeInsets.all(0),

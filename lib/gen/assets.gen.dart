@@ -704,12 +704,16 @@ class Assets {
   static const AssetGenImage imgMostRecent = AssetGenImage(
     'assets/img_most_recent.png',
   );
+  static const AssetGenImage islamiLogo = AssetGenImage(
+    'assets/islami_logo.png',
+  );
   static const AssetGenImage quranTabBg = AssetGenImage(
     'assets/quran_tab_bg.png',
   );
   static const String quranTabIcon = 'assets/quran_tab_icon.svg';
   static const String radioTabIcon = 'assets/radio_tab_icon.svg';
   static const String sebhaTabIcon = 'assets/sebha_tab_icon.svg';
+  static const AssetGenImage splashBg = AssetGenImage('assets/splash_bg.png');
   static const AssetGenImage suraDetailsBg = AssetGenImage(
     'assets/sura_details_bg.png',
   );
@@ -724,10 +728,12 @@ class Assets {
     hadeethTabIcon,
     imgHeader,
     imgMostRecent,
+    islamiLogo,
     quranTabBg,
     quranTabIcon,
     radioTabIcon,
     sebhaTabIcon,
+    splashBg,
     suraDetailsBg,
     timesTabIcon,
     verseIcon,
