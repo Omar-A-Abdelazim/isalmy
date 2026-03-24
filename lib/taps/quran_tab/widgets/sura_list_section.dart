@@ -32,10 +32,9 @@ class SuraListSection extends StatelessWidget {
               var sura = suras[index];
               return ListTile(
                 onTap: () {
-                  Navigator.of(context).pushNamed(
-                    SuraDetailsPage.routeName,
-                    arguments: {'id': index + 1, 'name': sura.arName},
-                  );
+                  Navigator.of(
+                    context,
+                  ).pushNamed(SuraDetailsPage.routeName, arguments: sura);
                 },
                 minVerticalPadding: 0,
                 contentPadding: EdgeInsets.all(0),

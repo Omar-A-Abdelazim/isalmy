@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:isalmy/common/app_color.dart';
 import 'package:isalmy/common/widgets/bg_layout_widget.dart';
 import 'package:isalmy/common/widgets/header_widget.dart';
+import 'package:isalmy/data/models/hadeeth_model.dart';
 import 'package:isalmy/gen/assets.gen.dart';
 
 class HadeethTabPage extends StatefulWidget {
@@ -12,12 +14,19 @@ class HadeethTabPage extends StatefulWidget {
 }
 
 class _HadeethTabPageState extends State<HadeethTabPage> {
-  PageController _controller = PageController(
+  final PageController _controller = PageController(
     viewportFraction: .75,
     initialPage: 0,
   );
   int currentPage = 0;
   bool isActive = false;
+  List<HadeethModel> hadeethModelList = [];
+  @override
+  void initState() {
+    super.initState();
+    loadAhadeeth();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -38,7 +47,7 @@ class _HadeethTabPageState extends State<HadeethTabPage> {
                     },
                     controller: _controller,
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: hadeethModelList.length,
                     itemBuilder: (context, index) {
                       bool isActive = index == currentPage;
                       return Padding(
@@ -73,19 +82,25 @@ class _HadeethTabPageState extends State<HadeethTabPage> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "الحديث الاول",
+                                        hadeethModelList[index].title,
                                         style: TextStyle(
                                           fontSize: 24,
                                           color: AppColor.blackColor,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      Text(
-                                        "تفاصيل الحديث",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.blackColor,
-                                          fontWeight: FontWeight.bold,
+                                      Expanded(
+                                        child: SingleChildScrollView(
+                                          child: Text(
+                                            textAlign: TextAlign.justify,
+                                            textDirection: TextDirection.rtl,
+                                            hadeethModelList[index].content,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: AppColor.blackColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -105,5 +120,24 @@ class _HadeethTabPageState extends State<HadeethTabPage> {
         ),
       ],
     );
+  }
+
+  Future<void> loadAhadeeth() async {
+    String ahadeeth = await rootBundle.loadString(
+      'assets/Hadeeth/ahadeeth.txt',
+    );
+    List<String> ahadeethList = ahadeeth.trim().split("#");
+    List<HadeethModel> ahadeethFinalList = [];
+    for (var i = 0; i < ahadeethList.length; i++) {
+      String hadeeth = ahadeethList[i].trim();
+      String title = hadeeth.split("\n").first;
+      int titleLength = title.length;
+      String hadeethContent = hadeeth.substring(titleLength);
+      ahadeethFinalList.add(
+        HadeethModel(content: hadeethContent, title: title, number: i + 1),
+      );
+    }
+    hadeethModelList = ahadeethFinalList;
+    setState(() {});
   }
 }
