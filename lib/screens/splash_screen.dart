@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> goHome() async {
     await Future.delayed(const Duration(milliseconds: 2500));
     if (!mounted) return;
-    Navigator.of(context).pushNamed(HomeScreen.routeName);
+    Navigator.of(context).pushNamed(OnboardingScreen.routeName);
   }
 
   @override

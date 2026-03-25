@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:isalmy/common/app_color.dart';
 import 'package:isalmy/common/widgets/header_widget.dart';
-import 'package:isalmy/data/static/onboarding_data.dart';
-import 'package:isalmy/gen/assets.gen.dart';
-import 'package:isalmy/screens/onboarding/widgets/onboarding_body_widget.dart';
+import 'package:isalmy/screens/home_screen.dart';
+import 'package:isalmy/screens/onboarding/first_screen.dart';
+import 'package:isalmy/screens/onboarding/second_screen.dart';
+import 'package:isalmy/screens/onboarding/third_screen.dart';
+import 'package:isalmy/screens/onboarding/fourth_screen.dart';
+import 'package:isalmy/screens/onboarding/fifth_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -16,65 +19,113 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
+  int currentPage = 0;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _nextPage() {
+    if (currentPage < 4) {
+      _controller.animateToPage(
+        currentPage + 1,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      Navigator.of(context).pushNamed(HomeScreen.routeName);
+    }
+  }
+
+  void _previousPage() {
+    if (currentPage > 0) {
+      _controller.animateToPage(
+        currentPage - 1,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final bool isLastPage = currentPage == 4;
+    final bool showBackButton = currentPage > 0;
+
     return Scaffold(
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            Positioned(top: 16, left: 0, right: 0, child: HeaderWidget()),
-            Positioned(
-              top: 250,
-              left: 0,
-              right: 0,
-              height: MediaQuery.of(context).size.height - 270,
+            Padding(padding: const EdgeInsets.all(20.0), child: HeaderWidget()),
+            Expanded(
               child: PageView(
-                children: [
-                  OnBoardingBodyWidget(
-                    controller: _controller,
-                    title: Onboarding[0].title,
-                    subTitle: Onboarding[0].subTitle,
-                    image: Onboarding[0].image,
-                  ),
-                  OnBoardingBodyWidget(
-                    controller: _controller,
-                    title: Onboarding[1].title,
-                    subTitle: Onboarding[1].subTitle,
-                    image: Onboarding[1].image,
-                  ),
-                  OnBoardingBodyWidget(
-                    controller: _controller,
-                    title: Onboarding[2].title,
-                    subTitle: Onboarding[2].subTitle,
-                    image: Onboarding[2].image,
-                  ),
-                  OnBoardingBodyWidget(
-                    controller: _controller,
-                    title: Onboarding[3].title,
-                    subTitle: Onboarding[3].subTitle,
-                    image: Onboarding[3].image,
-                  ),
-                  OnBoardingBodyWidget(
-                    controller: _controller,
-                    title: Onboarding[4].title,
-                    subTitle: Onboarding[4].subTitle,
-                    image: Onboarding[4].image,
-                  ),
+                controller: _controller,
+                onPageChanged: (value) {
+                  setState(() => currentPage = value);
+                },
+                children: const [
+                  FirstScreen(),
+                  SecondScreen(),
+                  ThirdScreen(),
+                  FourthScreen(),
+                  FifthScreen(),
                 ],
               ),
             ),
-            Positioned(
-              bottom: 50,
-              left: 150,
-              child: SmoothPageIndicator(
-                controller: _controller,
-                count: 5,
-                effect: SwapEffect(
-                  dotWidth: 7,
-                  dotHeight: 7,
-                  dotColor: AppColor.grayColor,
-                  activeDotColor: AppColor.goldColor,
-                ),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 10, 24, 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 80,
+                    child: showBackButton
+                        ? TextButton(
+                            onPressed: _previousPage,
+                            child: const Text(
+                              "Back",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xFFB19768),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        : const SizedBox(width: 80),
+                  ),
+
+                  // الـ Dots
+                  SmoothPageIndicator(
+                    controller: _controller,
+                    count: 5,
+                    effect: const ExpandingDotsEffect(
+                      dotHeight: 8,
+                      dotWidth: 8,
+                      expansionFactor: 3,
+                      spacing: 6,
+                      dotColor: AppColor.grayColor,
+                      activeDotColor: AppColor.goldColor,
+                    ),
+                  ),
+
+                  SizedBox(
+                    width: 80,
+                    child: TextButton(
+                      onPressed: _nextPage,
+                      child: Text(
+                        isLastPage ? "Finish" : "Next",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: AppColor.goldColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
