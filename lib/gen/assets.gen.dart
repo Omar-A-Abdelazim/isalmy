@@ -749,6 +749,9 @@ class Assets {
   static const $AssetsHadeethGen hadeeth = $AssetsHadeethGen();
   static const $AssetsSurasGen suras = $AssetsSurasGen();
   static const AssetGenImage appLogo = AssetGenImage('assets/app_logo.png');
+  static const AssetGenImage eveningZakar = AssetGenImage(
+    'assets/evening_zakar.png',
+  );
   static const AssetGenImage hadeethCardBg = AssetGenImage(
     'assets/hadeeth_card_bg.png',
   );
@@ -763,6 +766,9 @@ class Assets {
   );
   static const AssetGenImage islamiLogo = AssetGenImage(
     'assets/islami_logo.png',
+  );
+  static const AssetGenImage morningAzkar = AssetGenImage(
+    'assets/morning_azkar.png',
   );
   static const AssetGenImage onboardingBgFive = AssetGenImage(
     'assets/onboarding_bg_five.png',
@@ -801,18 +807,24 @@ class Assets {
   static const AssetGenImage suraDetailsBg = AssetGenImage(
     'assets/sura_details_bg.png',
   );
+  static const AssetGenImage timesBg = AssetGenImage('assets/times_bg.png');
+  static const AssetGenImage timesTabBg = AssetGenImage(
+    'assets/times_tab_bg.png',
+  );
   static const String timesTabIcon = 'assets/times_tab_icon.svg';
   static const String verseIcon = 'assets/verse_icon.svg';
 
   /// List of all assets
   static List<dynamic> get values => [
     appLogo,
+    eveningZakar,
     hadeethCardBg,
     hadeethTabBg,
     hadeethTabIcon,
     imgHeader,
     imgMostRecent,
     islamiLogo,
+    morningAzkar,
     onboardingBgFive,
     onboardingBgFour,
     onboardingBgOne,
@@ -830,6 +842,8 @@ class Assets {
     sebhaTabIcon,
     splashBg,
     suraDetailsBg,
+    timesBg,
+    timesTabBg,
     timesTabIcon,
     verseIcon,
   ];
