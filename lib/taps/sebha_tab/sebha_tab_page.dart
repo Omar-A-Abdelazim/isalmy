@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:isalmy/common/app_color.dart';
 import 'package:isalmy/common/widgets/bg_layout_widget.dart';
 import 'package:isalmy/common/widgets/header_widget.dart';
 import 'package:isalmy/gen/assets.gen.dart';

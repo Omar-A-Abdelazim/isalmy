@@ -783,6 +783,13 @@ class Assets {
     'assets/quran_tab_bg.png',
   );
   static const String quranTabIcon = 'assets/quran_tab_icon.svg';
+  static const AssetGenImage radioMosque = AssetGenImage(
+    'assets/radio_mosque.png',
+  );
+  static const AssetGenImage radioOn = AssetGenImage('assets/radio_on.png');
+  static const AssetGenImage radioTabBg = AssetGenImage(
+    'assets/radio_tab_bg.png',
+  );
   static const String radioTabIcon = 'assets/radio_tab_icon.svg';
   static const AssetGenImage routeLogo = AssetGenImage('assets/route_logo.png');
   static const AssetGenImage sebha = AssetGenImage('assets/sebha.png');
@@ -813,6 +820,9 @@ class Assets {
     onboardingBgTwo,
     quranTabBg,
     quranTabIcon,
+    radioMosque,
+    radioOn,
+    radioTabBg,
     radioTabIcon,
     routeLogo,
     sebha,
